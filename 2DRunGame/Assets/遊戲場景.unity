@@ -6958,6 +6958,7 @@ GameObject:
   - component: {fileID: 1852693007}
   - component: {fileID: 1852693009}
   - component: {fileID: 1852693011}
+  - component: {fileID: 1852693012}
   - component: {fileID: 1852693010}
   m_Layer: 0
   m_Name: "\u8C93\u54AA"
@@ -7086,6 +7087,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1852693012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852693006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c553f01018cea499d8e2a5d800505e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  jump: 350
+  hp: 500
+  isGround: 0
+  coin: 0
+  soundHit: {fileID: 8300000, guid: 8e15e2ca48eea694fadff21103349bf1, type: 3}
+  soundSlide: {fileID: 8300000, guid: ba5a469d881f93f4db46c94dc2cc6c7c, type: 3}
+  soundJump: {fileID: 8300000, guid: b822462d624d91c44990b85756534847, type: 3}
+  soundCoin: {fileID: 8300000, guid: 9fbf11a009e756d44b3af4908648c59d, type: 3}
+  ani: {fileID: 1852693009}
+  ride: {fileID: 1852693011}
+  cap: {fileID: 1852693010}
 --- !u!1001 &1857917892
 PrefabInstance:
   m_ObjectHideFlags: 0
