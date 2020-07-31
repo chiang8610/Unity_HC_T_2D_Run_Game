@@ -14,6 +14,10 @@ public class LearmAPI : MonoBehaviour
 
     public Transform cube;
 
+    public Light Directional;
+
+    public Camera Main;
+
     private void Start()
     {
         // [取得] 屬性 Peoperties
@@ -31,10 +35,18 @@ public class LearmAPI : MonoBehaviour
 
         //練習:
         //1.控制燈光顏色為紅色   Light
+
+        Directional.color = Color.red;
+        print("燈顏色:" + Directional.color);
+
         //2.設定燈光恢復預設值   Light
+
+        Directional.Reset();
+
+
         //3.調整攝影機尺寸 3        Camera
 
-
+        Main.sensorSize = new Vector2(720, 720);
 
 
     }
@@ -47,7 +59,7 @@ public class LearmAPI : MonoBehaviour
         // 欄位名稱.方法(對應的引數)
         cube.Rotate(0,0,10);          //以秒為單位1/s  10
         cube.Translate(1, 0, 0);
-
+       
 
     }
 }
