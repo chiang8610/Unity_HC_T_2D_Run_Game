@@ -41,7 +41,11 @@ public class player : MonoBehaviour
     ///  跳躍
     /// </summary>
     public void Jump()
-    { 
+    {
+        //動畫控制器 設定布林值("參數名稱",布林植)
+        //名稱.SetBool("bool名稱",是or否)
+        //
+        ani.SetBool("跳躍開關", true);
     }
     
     /// <summary>
@@ -85,7 +89,8 @@ public class player : MonoBehaviour
     #region 事件
     private void Start()
     {
-        
+        Jump();
+
     }
 
     private void Update()

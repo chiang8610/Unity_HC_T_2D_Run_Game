@@ -36,8 +36,8 @@ public class LearmAPI : MonoBehaviour
         //練習:
         //1.控制燈光顏色為紅色   Light
 
-        Directional.color = Color.red;
-        print("燈顏色:" + Directional.color);
+        Directional.color = new Color(0.8f, 0, 0);
+        
 
         //2.設定燈光恢復預設值   Light
 
@@ -46,7 +46,7 @@ public class LearmAPI : MonoBehaviour
 
         //3.調整攝影機尺寸 3        Camera
 
-        Main.sensorSize = new Vector2(720, 720);
+        Main.orthographicSize = 3;
 
 
     }
