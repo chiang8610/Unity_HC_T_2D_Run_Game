@@ -44,8 +44,10 @@ public class player : MonoBehaviour
     {
         //動畫控制器 設定布林值("參數名稱",布林植)
         //名稱.SetBool("bool名稱",是or否)
-        //
-        ani.SetBool("跳躍開關", true);
+        //玩家是否按空白建
+        bool space = Input.GetKeyDown(KeyCode.Space);
+        ani.SetBool("跳躍開關", space);
+     
     }
     
     /// <summary>
@@ -53,7 +55,13 @@ public class player : MonoBehaviour
     /// </summary>
     public void Slide()
     {
-     
+        bool ctrl = Input.GetKeyDown(KeyCode.LeftControl);
+        ani.SetBool("滑行開關", ctrl);
+
+        if (ctrl)
+        {
+            float capla
+        }
     }
 
     /// <summary>
@@ -89,13 +97,14 @@ public class player : MonoBehaviour
     #region 事件
     private void Start()
     {
-        Jump();
+       
 
     }
 
     private void Update()
     {
-        
+        Jump();
+        Slide();
     }
     #endregion
 }
