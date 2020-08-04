@@ -7330,6 +7330,7 @@ MonoBehaviour:
   ani: {fileID: 1852693009}
   ride: {fileID: 1852693011}
   cap: {fileID: 1852693010}
+  Cap: {fileID: 1852693010}
 --- !u!1001 &1857917892
 PrefabInstance:
   m_ObjectHideFlags: 0

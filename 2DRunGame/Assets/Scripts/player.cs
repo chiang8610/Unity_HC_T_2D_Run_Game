@@ -54,7 +54,7 @@ public class player : MonoBehaviour
     /// <summary>
     /// 滑行
     /// </summary>
-    public CapsuleCollider2D Capsule;
+   
 
     public void Slide()
     {
@@ -102,22 +102,27 @@ public class player : MonoBehaviour
 
     }
 
+    public CapsuleCollider2D Cap;
+
+    
+
     private void Update()
     {
         Jump();
         Slide();
 
-        if (ani)
+        if ( Input.GetKeyDown(KeyCode.LeftControl))
+      
 
         {
-            Capsule.size = new Vector2(1,1 );
-            Capsule.offset = new Vector2(-0.1f, -1.5f);
+            Cap.size = new Vector2(1.35f,1.35f);
+            Cap.offset = new Vector2(-0.1f, -1.5f);
         }
 
         else
         {
-            Capsule.size = new Vector2(1.35f, 3.6f);
-            Capsule.offset = new Vector2(-0.1f, -0.4f);
+            Cap.size = new Vector2(1.35f, 3.6f);
+            Cap.offset = new Vector2(-0.1f, -0.4f);
         }
     }
     #endregion
