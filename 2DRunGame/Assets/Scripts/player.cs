@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class player : MonoBehaviour
@@ -49,20 +50,20 @@ public class player : MonoBehaviour
         ani.SetBool("跳躍開關", space);
      
     }
-    
+
     /// <summary>
     /// 滑行
     /// </summary>
+    public CapsuleCollider2D Capsule;
+
     public void Slide()
     {
         bool ctrl = Input.GetKeyDown(KeyCode.LeftControl);
         ani.SetBool("滑行開關", ctrl);
 
-        if (ctrl)
-        {
-            float capla
-        }
+       
     }
+  
 
     /// <summary>
     /// 吃金幣
@@ -105,6 +106,19 @@ public class player : MonoBehaviour
     {
         Jump();
         Slide();
+
+        if (ani)
+
+        {
+            Capsule.size = new Vector2(1,1 );
+            Capsule.offset = new Vector2(-0.1f, -1.5f);
+        }
+
+        else
+        {
+            Capsule.size = new Vector2(1.35f, 3.6f);
+            Capsule.offset = new Vector2(-0.1f, -0.4f);
+        }
     }
     #endregion
 }
