@@ -15,7 +15,7 @@ public class player : MonoBehaviour
 
     public bool isGround;
     public int coin;
-
+    public bool slide_bool;
     [Header("音效區域")]
     public AudioClip soundHit;
     public AudioClip soundSlide;
@@ -61,7 +61,18 @@ public class player : MonoBehaviour
         bool ctrl = Input.GetKeyDown(KeyCode.LeftControl);
         ani.SetBool("滑行開關", ctrl);
 
-       
+        if (ctrl)
+        {
+            cap.size = new Vector2(1.35f, 1.35f);
+            cap.offset = new Vector2(-0.1f, -1.5f);
+            slide_bool = true;
+        }
+        else
+        {
+            cap.size = new Vector2(1.35f, 3.6f);
+            cap.offset = new Vector2(-0.1f, -0.4f);
+        }
+
     }
   
 
@@ -102,7 +113,7 @@ public class player : MonoBehaviour
 
     }
 
-    public CapsuleCollider2D Cap;
+   
 
     
 
@@ -110,20 +121,6 @@ public class player : MonoBehaviour
     {
         Jump();
         Slide();
-
-        if ( Input.GetKeyDown(KeyCode.LeftControl))
-      
-
-        {
-            Cap.size = new Vector2(1.35f,1.35f);
-            Cap.offset = new Vector2(-0.1f, -1.5f);
-        }
-
-        else
-        {
-            Cap.size = new Vector2(1.35f, 3.6f);
-            Cap.offset = new Vector2(-0.1f, -0.4f);
-        }
     }
     #endregion
 }
