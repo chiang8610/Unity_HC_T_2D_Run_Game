@@ -12,9 +12,10 @@ public class player : MonoBehaviour
     public float hp = 500;
     [Header("血條")]
     public Image imageHp;
-
     private float hpMax;
+    [Header("是否在地板")]
     public bool isGround; //是否在地板上
+    [Header("金幣")]
     public int coin;
     
    
@@ -28,6 +29,15 @@ public class player : MonoBehaviour
     public Text textCoin;
 
 
+    [Header("結束畫面")]
+    public GameObject final;
+    private bool dead;
+
+    [Header("過關標題與金幣")]
+    public Text textTitle;
+    public Text textFinaCoin;
+
+    [Header("其他")]
     public Animator ani;
     public Rigidbody2D rig;
     public CapsuleCollider2D cap;
@@ -138,24 +148,43 @@ public class player : MonoBehaviour
     /// </summary>
     public void Hit(GameObject obj)
     {
-        hp -= 30;
+        hp -= 999;
        aud.PlayOneShot(soundHit, 1);
         imageHp.fillAmount = hp / hpMax;
        Destroy(obj);
-        
+
+        if (hp <= 0) Dead();
+      
+       
 
     }
+   
     /// <summary>
     /// 死亡
     /// </summary>
     public void Dead()
     {
+        ani.SetTrigger("死亡觸發");               //死亡動畫
+        final.SetActive(true);                          //顯示結束畫面
+        speed = 0;                                            //死掉後速度=0
+        dead = true;
+        textTitle.text = "失敗 哭哭.....";
 
-    } /// <summary>
+    }
+
+   
+    
+
+
+    /// <summary>
       /// 過關
       /// </summary>
     public void Pass()
     {
+        speed = 0;                               //速度=0
+        final.SetActive(true);             //顯示結束畫面
+        textTitle.text = "恭喜過關 :)";
+        textFinaCoin.text = "本次金幣數量:" + coin;
 
     }
     #endregion
@@ -173,6 +202,10 @@ public class player : MonoBehaviour
 
     private void Update()
     {
+
+        if (dead) return;                                              //如果死亡 後面的動作不執行 直接跳出
+        if (transform.position.y <= -5) Dead( );         //第二種死法
+
         Jump();
         Slide();
         Move();
@@ -194,7 +227,11 @@ public class player : MonoBehaviour
         //如果 碰撞資訊.標籤 等於 金幣 吃掉金幣(碰撞資訊,遊戲物件)
         if (collision.tag == "金幣") Eatcoin(collision.gameObject);
 
+        // 如果 碰到障礙物 受傷
         if (collision.tag == "障礙物") Hit(collision.gameObject);
+
+        //如果 碰撞資訊.名稱 等於 傳送門 過關
+        if (collision.name == "傳送門") Pass();
     }
 
 
