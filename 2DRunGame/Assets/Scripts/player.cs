@@ -71,12 +71,12 @@ public class player : MonoBehaviour
         bool space = Input.GetKeyDown(KeyCode.Space);
 
         //2D設限碰撞物件= 2D 物理 .  設限碰撞(起點,方向,長度,圖層-只使用在這圖層上,語法1<<圖層)
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-0.05f, -1.1f), -transform.up, 0.01f, 1 << 8);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-0.05f, -1.1f), -transform.up, 0.2f, 1 << 8);
 
         if (hit)
         {
             isGround = true;      //如果碰到地板圖層 在地板上 = 是
-            ani.SetBool("跳躍開關", false);    //在地板上不要跳  
+           ani.SetBool("跳躍開關", false);    //在地板上不要跳  
         }
         else
         {
@@ -111,21 +111,21 @@ public class player : MonoBehaviour
         ani.SetBool("滑行開關", ctrl);
 
         if (Input.GetKeyDown(KeyCode.LeftControl))   aud.PlayOneShot(soundSlide, 1.3f);
+
+
+            if (ctrl)
+            {
+                cap.size = new Vector2(1.35f, 1.35f);
+                cap.offset = new Vector2(-0.1f, -1.5f);
+                isGround = true;
+
+            }
+            else
+            {
+                cap.size = new Vector2(1.35f, 3.6f);
+                cap.offset = new Vector2(-0.1f, -0.4f);
+            }
         
-
-        if (ctrl)
-        {
-            cap.size = new Vector2(1.35f, 1.35f);
-            cap.offset = new Vector2(-0.1f, -1.5f);
-            
-
-        }
-        else
-        {
-            cap.size = new Vector2(1.35f, 3.6f);
-            cap.offset = new Vector2(-0.1f, -0.4f);
-        }
-
     }
 
 
@@ -148,7 +148,7 @@ public class player : MonoBehaviour
     /// </summary>
     public void Hit(GameObject obj)
     {
-        hp -= 999;
+        hp -= 100;
        aud.PlayOneShot(soundHit, 1);
         imageHp.fillAmount = hp / hpMax;
        Destroy(obj);
@@ -169,7 +169,7 @@ public class player : MonoBehaviour
         speed = 0;                                            //死掉後速度=0
         dead = true;
         textTitle.text = "失敗 哭哭.....";
-
+        textFinaCoin.text = "本次金幣數量:" + coin;
     }
 
    
@@ -249,7 +249,7 @@ public class player : MonoBehaviour
         //transform.right 此物件右方       x
         //transform.forward 此物件前方  z
         //如需要下 左 後 在上述方向加負號
-        Gizmos.DrawRay(transform.position + new Vector3(-0.05f, -1.1f), -transform.up * 0.01f);
+        Gizmos.DrawRay(transform.position + new Vector3(-0.05f, -1.1f), -transform.up * 0.2f);
 
     }
     #endregion
