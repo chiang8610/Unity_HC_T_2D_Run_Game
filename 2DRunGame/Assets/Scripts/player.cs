@@ -136,7 +136,7 @@ public class player : MonoBehaviour
     public void Eatcoin(GameObject obj)
     {
         coin++;                                                  //遞增1
-        aud.PlayOneShot(soundCoin, 1);          //播放音效
+        aud.PlayOneShot(soundCoin, 0.7f);          //播放音效
         textCoin.text = "金幣數量:" + coin;       //文字介面.文字= 字串 + 整數
         Destroy(obj,0);                                         //刪除(金幣物件，延遲時間)
     }
@@ -183,7 +183,7 @@ public class player : MonoBehaviour
     {
         speed = 0;                               //速度=0
         final.SetActive(true);             //顯示結束畫面
-        textTitle.text = "恭喜過關 :)";
+        textTitle.text = "大吉大利，今晚吃雞!";
         textFinaCoin.text = "本次金幣數量:" + coin;
 
     }
